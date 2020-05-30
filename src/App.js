@@ -19,6 +19,7 @@ const height = 45;
 const displacement = 25;
 
 const translateTime = 2;
+const rotateTime = 6;
 
 const Triangles = styled.div`
   position: relative;
@@ -68,20 +69,38 @@ const Triangles = styled.div`
     }
   }
 
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    33.33% {
+      transform: rotate(120deg);
+    }
+    66.66% {
+      transform: rotate(240deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   img {
     position: absolute;
     width: ${`${width}px`};
     height: ${`${height}px`};
   }
   img.triangle1 {
-    animation: translate1 ${`${translateTime}s`} ease-in-out infinite;
+    animation: rotation ${`${rotateTime}s`} infinite,
+      translate1 ${`${translateTime}s`} ease-in-out infinite;
   }
 
   img.triangle2 {
-    animation: translate2 ${`${translateTime}s`} ease-in-out infinite;
+    animation: rotation ${`${rotateTime}s`} infinite,
+      translate2 ${`${translateTime}s`} ease-in-out infinite;
   }
   img.triangle3 {
-    animation: translate3 ${`${translateTime}s`} ease-in-out infinite;
+    animation: rotation ${`${rotateTime}s`} infinite,
+      translate3 ${`${translateTime}s`} ease-in-out infinite;
   }
 `;
 
