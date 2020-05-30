@@ -16,26 +16,72 @@ const Container = styled.div`
 const width = 50;
 const height = 45;
 
+const displacement = 25;
+
+const translateTime = 2;
+
 const Triangles = styled.div`
   position: relative;
-  text-align: center;
-  border: 1px solid red;
+
+  @keyframes translate1 {
+    0% {
+      top: ${`${-height}px`};
+      left: ${`${-width / 2}px`};
+    }
+    50% {
+      top: ${`${-height - displacement}px`};
+      left: ${`${-width / 2}px`};
+    }
+    100% {
+      top: ${`${-height}px`};
+      left: ${`${-width / 2}px`};
+    }
+  }
+
+  @keyframes translate2 {
+    0% {
+      top: 0;
+      left: 0;
+    }
+    50% {
+      top: 0;
+      left: ${`${displacement}px`};
+    }
+    100% {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  @keyframes translate3 {
+    0% {
+      top: 0;
+      left: ${`${-width}px`};
+    }
+    50% {
+      top: 0;
+      left: ${`${-width - displacement}px`};
+    }
+    100% {
+      top: 0;
+      left: ${`${-width}px`};
+    }
+  }
+
   img {
     position: absolute;
     width: ${`${width}px`};
     height: ${`${height}px`};
   }
   img.triangle1 {
-    top: ${`${-height}px`};
-    left: ${`${-width / 2}px`};
+    animation: translate1 ${`${translateTime}s`} ease-in-out infinite;
   }
+
   img.triangle2 {
-    top: 0;
-    left: 0;
+    animation: translate2 ${`${translateTime}s`} ease-in-out infinite;
   }
   img.triangle3 {
-    top: 0;
-    left: ${`${-width}px`};
+    animation: translate3 ${`${translateTime}s`} ease-in-out infinite;
   }
 `;
 
