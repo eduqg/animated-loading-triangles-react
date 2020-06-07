@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import triangle from "./triangle.png";
+import triangle from "./triangle380-347.png";
 
 const Container = styled.div`
   /* Optional */
@@ -13,18 +13,25 @@ const Container = styled.div`
   background-color: #eee;
 `;
 
-const width = 50;
-const height = 45;
+/* Image Properties */
+const imageWidth = 380;
+const imageHeight = 347;
 
-const displacement = 25;
+const size = 0.2;
+const width = imageWidth * size;
+const height = imageHeight * size;
+
+const rotationCenter = (imageHeight - 130.5) * size;
 
 const translateTime = 2;
 const rotateTime = 6;
 
+const displacement = 20;
+
 const Triangles = styled.div`
   position: relative;
 
-  @keyframes translate1 {
+  @keyframes translateTriangle1 {
     0% {
       top: ${`${-height}px`};
       left: ${`${-width / 2}px`};
@@ -39,7 +46,7 @@ const Triangles = styled.div`
     }
   }
 
-  @keyframes translate2 {
+  @keyframes translateTriangle2 {
     0% {
       top: 0;
       left: 0;
@@ -54,7 +61,7 @@ const Triangles = styled.div`
     }
   }
 
-  @keyframes translate3 {
+  @keyframes translateTriangle3 {
     0% {
       top: 0;
       left: ${`${-width}px`};
@@ -69,7 +76,7 @@ const Triangles = styled.div`
     }
   }
 
-  @keyframes rotation {
+  @keyframes rotationTriangles {
     0% {
       transform: rotate(0deg);
     }
@@ -83,24 +90,23 @@ const Triangles = styled.div`
       transform: rotate(360deg);
     }
   }
-
   img {
     position: absolute;
     width: ${`${width}px`};
     height: ${`${height}px`};
+    transform-origin: 50% ${`${rotationCenter}px`};
   }
   img.triangle1 {
-    animation: rotation ${`${rotateTime}s`} infinite,
-      translate1 ${`${translateTime}s`} ease-in-out infinite;
+    animation: rotationTriangles ${`${rotateTime}s`} infinite,
+      translateTriangle1 ${`${translateTime}s`} ease-in-out infinite;
   }
-
   img.triangle2 {
-    animation: rotation ${`${rotateTime}s`} infinite,
-      translate2 ${`${translateTime}s`} ease-in-out infinite;
+    animation: rotationTriangles ${`${rotateTime}s`} infinite,
+      translateTriangle2 ${`${translateTime}s`} ease-in-out infinite;
   }
   img.triangle3 {
-    animation: rotation ${`${rotateTime}s`} infinite,
-      translate3 ${`${translateTime}s`} ease-in-out infinite;
+    animation: rotationTriangles ${`${rotateTime}s`} infinite,
+      translateTriangle3 ${`${translateTime}s`} ease-in-out infinite;
   }
 `;
 
